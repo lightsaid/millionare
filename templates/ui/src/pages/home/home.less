@@ -1,0 +1,136 @@
+@import "../../styles/app.less";
+
+.container{
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+// 头部 
+.topnav{
+    width: 100%;
+    height: 3.2em;
+    position: absolute;
+    background: linear-gradient(to right, #7eb0d5, @master);
+    display: flex;
+    .nav{
+        margin-right: 0.79em;
+        margin-top: 0.4em;
+    }
+    .username{
+        margin-top: 0.3em;
+        color: #ffffff;
+        .name-text{
+            font-size: 1em;
+        }
+       .label{
+           font-size: 0.82em;
+           color: #ebe6e6;
+       }
+    }
+    .avatar{
+        margin-left: 1em;
+        .avatar-box{
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #f2f2f2;
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 100%;
+            }
+        }
+    }
+    .add{
+        margin-left: auto;
+        margin-top: 0.77em;
+        border-left: 15px solid transparent;
+        svg{
+            width: 1.6em;
+            height: 1.6em;
+            path{
+                fill: #ffffff;
+            }
+        }
+    }
+}
+
+// 侧边菜单栏
+.sidebar{
+    display: none;
+    height: 100vh;
+    margin-left: -100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 80%;
+    border-right: 1px solid rgba(0, 0, 0, .22);
+    box-shadow: 0.3em 0 0.5em rgba(0, 0, 0, .22);
+    background: #ffffff;
+    transition: all .2s linear;
+    &.active{
+        margin-left: 0;
+        display: block;
+        transition: all .2s linear;
+    }
+}
+
+
+
+// 查询
+.search{
+    margin-top: 3.5em;
+    border-bottom: 2px solid #cccccc;
+    .category{
+        display: flex;
+        align-items: center;
+        font-size: 1em;
+        svg{
+            margin-left: 0.2em;
+            width: 1em;
+            height: 1em;
+            path{
+
+            }
+        }
+    }
+    .summary{
+        display: flex;
+        li{
+            padding-right: 0.8em;
+        }
+        .date{
+            display: flex;
+            align-items: center;
+        }
+        
+    }
+}
+
+// 记录 list
+.records{
+    margin-top: 0.8em;
+    li{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+// 没有记录
+.no-record{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .icon-svg{
+        svg{
+            width: 3em;
+        }
+    }
+    .text{
+        font-size: 1em;
+    }
+}
