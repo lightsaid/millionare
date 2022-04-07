@@ -1,4 +1,135 @@
-.container {
+@import "../../styles/app.less";
+
+body{
+    height: 100vh;
     display: flex;
-    background-color: rosybrown;
+    align-items: center;
+    margin: 0 1.42em;
+    justify-content: center;
+    background-color: #f2f2f2;
+}
+.container {
+    position: relative;
+    max-width: 28.5em;
+    width: 100%;
+    border-radius: 0.72em;
+    box-shadow: @shadow;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+// 登录form 动画
+.container .login{
+    transition: margin-left .2s linear;
+}
+.container.active .login{
+    margin-left: -50%;
+    opacity: 0;
+    transition: margin-left .2s linear, opacity .2s ease;
+}
+
+// 注册 form 动画
+.container .register{
+    opacity: 0;
+    transition: opacity .2s linear;
+}
+.container.active .register{
+    opacity: 1;
+    transition: opacity .2s linear;
+}
+
+.container.active .froms{
+    height: 550px;
+}
+
+.froms{
+    display: flex;
+    align-items: center;
+    height: 440px;
+    width: 200%;
+    transition: height .2s linear;
+    .form {
+        width: 50%;
+        padding: 2.14em;
+        .title{
+            font-size: 1.6rem;
+        }
+        .form-field{
+            position: relative;
+            width: 100%;
+            height: 3.57em;
+            margin-top: 2.14em;
+            input{
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                padding: 0 2.5em;
+                font-size: 1.14rem;
+                border-bottom: 2px solid #e8e3e3;
+                border-top: 2px solid transparent;
+            }
+            .icon{
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 3;
+                width: 23px;
+                height: 23px;
+                path{
+                    fill: #999;
+                }
+            }
+            .icon.eye{
+                right: 0;
+            }
+            .icon.hidden{
+                display: none;
+            }
+        }
+        .about-account{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.42em;
+            .checkbox-content{
+                // 默认的 checkbox 勾选样式重置掉
+                input[type="checkbox"]{
+                    width: 0;
+                    height: 0;
+                    opacity: 0;
+                }
+                label{
+                    padding-left: 20px;
+                    background: url(../../assets/check-square-none.svg) no-repeat;
+                    background-size: 18px 18px;
+                    font-size: 1.05em;
+                    line-height: 18px;
+                    color: #757575;
+                    cursor: pointer;
+                }
+                input[type="checkbox"]:checked ~ label[for="remember"]{
+                    padding-left: 20px;
+                    background: url(../../assets/check-square.svg) no-repeat;
+                    background-size: 18px 18px;
+                    font-size: 1.05em;
+                    line-height: 18px;
+                    color: #2185d0;
+                    cursor: pointer;
+                }
+            }
+        }
+        // 登录按钮
+        .form-field.button{
+            input{
+                background-color: @master !important;
+                border-bottom: none;
+                border-radius: 0.42em;
+                color: #fff;
+            }
+        }
+    }
+    .handle-tip{
+        margin-top: 2.14em;
+        text-align: center;
+    }
 }

@@ -2,7 +2,7 @@ const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
-    devtool: "source-map", // debug 调试定位到源代码
+    devtool: "inline-source-map",// debug 调试定位到源代码
     entry: {
         // 多页面，多入口
         login: './src/pages/login/login.ts',
@@ -64,7 +64,8 @@ module.exports = {
 								plugins: [require('postcss-preset-env'), require('autoprefixer')],
 							},
 						},
-					},
+                    },
+                    "less-loader"
 				],
 			},
 			{
