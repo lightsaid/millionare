@@ -60,7 +60,6 @@
 
 // 侧边菜单栏
 .sidebar{
-    display: none;
     height: 100vh;
     margin-left: -100%;
     position: absolute;
@@ -68,18 +67,15 @@
     left: 0;
     z-index: 9;
     width: 80%;
-    border-right: 1px solid rgba(0, 0, 0, .22);
-    box-shadow: 0.3em 0 0.5em rgba(0, 0, 0, .22);
     background: #ffffff;
-    transition: all .2s linear;
+    transition: margin-left .3s linear;
     &.active{
         margin-left: 0;
-        display: block;
-        transition: all .2s linear;
+        transition: margin-left .3s linear;
+        border-right: 1px solid rgba(0, 0, 0, .22);
+        box-shadow: 0.3em 0 0.5em rgba(0, 0, 0, .22);
     }
 }
-
-
 
 // 查询
 .search{
