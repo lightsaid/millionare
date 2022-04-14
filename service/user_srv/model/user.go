@@ -44,3 +44,8 @@ func (m *UserModel) FromProtoBuff(user *userpb.User) error {
 	m.Signature = user.GetSignature()
 	return nil
 }
+
+// CollectionName return mongodb collection name
+func CollectionName() string {
+	return "user"
+}
