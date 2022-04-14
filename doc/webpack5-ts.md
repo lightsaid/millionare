@@ -145,7 +145,8 @@ module.exports = {
 **最后就是编写代码测试配置是否成功，此处就不在做记录** <br>
 
 <span style="font-weight: bold;color:#80c8f5;">
-配置的完整代码可查看代码分支：01-webpack5-config
+配置的完整代码可查看代码分支：01-webpack5-config,
+补充说明：css loader 忘记加了 "less-loader"
 </span><br>
 
 **那么如何验证配置是否成功呢？主要关注以下几点：**
@@ -171,3 +172,4 @@ node_modules
 ```
 - git add .
 - git commit -m"add: webpack5 ts config"
+- git checkout -b 01-webpack5-config

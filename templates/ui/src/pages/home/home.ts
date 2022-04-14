@@ -1,4 +1,6 @@
 import './home.less'
+import "../../components/tag-popup/index.less"
+import "../../components/month-popup/index.less"
 import * as popup from '../../components/month-popup/index'
 import * as tagsPopup from "../../components/tag-popup/index";
 import { ITags, ITagsParams } from "../../components/tag-popup/types";
@@ -45,9 +47,6 @@ gid('select-date')?.addEventListener('click', (e) => {
     e.stopPropagation()
 	popup.OpenMonthPopup()
 })
-
-// 应该有一个总线
-// handler type —>  function
 
 // 生成 monthPopup
 const apppopup = popup.GenerateMonthPopup()

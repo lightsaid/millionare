@@ -1,0 +1,115 @@
+
+// 月份popup
+.app-popup{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 11;
+	display: none;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .4);
+	&.app-popup-show{
+		display: block;
+		bottom: 0;
+		margin-bottom: 0;
+	}
+}
+
+.month-popup {
+    position: absolute;
+	bottom: 0;
+    left: 0;
+    z-index: 13;
+    width: 100%;
+	height: 66%;
+	margin-bottom: -150vh;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+	background-color: #f2f2f2;
+    transition: margin-bottom .3s ease;
+    overflow-y: scroll;
+    .title{
+        position: fixed;
+        width: 100%;
+        text-align: center;
+        background: #fff;
+        line-height: 3em;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        font-size: 1.1em;
+        color: #333;
+        border-bottom: 1px solid #eee2e2;
+        span{
+            &:first-child{
+                position: absolute;
+                right: 0.3em;
+                top: -0.2em;
+                font-size: 1.68em;
+                color: #8f8888;
+                font-weight: 400;
+            }
+        }
+    }
+    .months{
+        padding: 1em 1em 0 1em;
+        p.year{
+            text-align: center;
+            padding: 0 0 0.8em 0;
+            font-size: 1.1em;
+            color: #666;
+        }
+        .ul{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 0.5em;
+            transition: border-top .5s linear;
+            background-color: #f2f2f2;
+            li{
+                padding: 1em 0.5em;
+                border: 1px solid transparent;
+                text-align: center;
+				background-color: #ffffff;
+				border-radius: 0.4em;
+                &.active{
+                    animation: borderShow 0.8s linear;
+                    border: 1px solid #2185d0;
+                }
+            }
+        }
+	}
+	&.hidden{
+		margin-bottom: -150vh;
+		transition: margin-bottom .3s ease;
+	}
+	&.show{
+		margin-bottom: 0;
+		transition: margin-bottom .3s ease;
+	}
+}
+.month-popup > div:nth-child(2){
+    padding-top: 4.2em;
+}
+
+.month-popup > div:last-child{
+    padding-bottom: 1.5em;
+}
+
+@keyframes borderShow {
+    0%{
+        border-top: 1px solid #8cbbde;
+    }
+    25%{
+        border-bottom: 1px solid #7eb9e6;
+        
+    }
+    50%{
+        border-left: 1px solid #70b3e7;
+    }
+    75%{
+        border-right: 1px solid #62aae3;
+    }
+    100%{
+        border: 1px solid #2185d0;
+    }
+}

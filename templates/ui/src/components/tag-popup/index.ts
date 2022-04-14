@@ -104,7 +104,33 @@ export const SelectorCall = (cb: Function) =>  {
     })
 }
 
+enum OptClass {
+    add = "add",
+    remove = "remove"
+}
+const setTagPopupMarginBotton = (opt: OptClass, classSelector: string) => {
+    const monthPop = doc.qss(".app-popup .tag-popup") as HTMLDivElement
+    monthPop.classList[opt](classSelector)
+}
+
 const popupTogger = () => {
-    doc.qss(".app-popup-tag")?.classList.toggle("tag-popup-show")
+    let timer: any;
+   const appPopup = doc.qss(".app-popup-tag")
+     // 隐藏，先等tagContent做完动画,appPopup再display：none
+     if (appPopup?.classList.contains("tag-popup-show")){
+        setTagPopupMarginBotton(OptClass.add,"hidden")
+        setTagPopupMarginBotton(OptClass.remove, "show")
+        setTimeout(()=>{
+            appPopup?.classList.toggle("tag-popup-show")
+        }, 320)
+    }else{
+        // 显示，先等appPop 显示出来，taghpop再做动画
+        appPopup?.classList.toggle("tag-popup-show")
+        timer = setTimeout(()=>{
+                setTagPopupMarginBotton(OptClass.add,"show")
+                setTagPopupMarginBotton(OptClass.remove,"hidden")
+            clearTimeout(timer)
+        }, 20)
+    }
 }
 

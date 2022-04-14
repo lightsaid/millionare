@@ -6,7 +6,8 @@ module.exports = {
     entry: {
         // 多页面，多入口
         login: './src/pages/login/login.ts',
-		home: './src/pages/home/home.ts',
+        home: './src/pages/home/home.ts',
+		append: './src/pages/append/append.ts',
     },
     output: {
         // 输出文件名配置
@@ -34,6 +35,11 @@ module.exports = {
 			template: './src/pages/home/home.html',
 			filename: 'pages/home.html',
 			chunks: ['home'],
+        }),
+        new HtmlWebpackPlugin({
+			template: './src/pages/append/append.html',
+			filename: 'pages/append.html',
+			chunks: ['append'],
 		}),
     ],
     module: {

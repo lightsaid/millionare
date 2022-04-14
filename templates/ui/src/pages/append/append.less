@@ -1,0 +1,58 @@
+@import "../../styles/app.less";
+
+.container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.append-form {
+    & > .title{
+        position: relative;
+        margin-bottom: 1em;
+        font-size: 1.4em;
+        color: @master;
+        &::after{
+            position: absolute;
+            bottom: -5px;
+            display: block;
+            content: "";
+            width: 4em;
+            height: 5px;
+            border-radius: 4px;
+            background: linear-gradient(to right, @master, #7eb0d5);;
+        }
+    }
+    margin: 1em;
+    .form-field{
+        &:first-child{
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.04em;
+        }
+        input[name="amount"]{
+            width: 60%;
+            height: 3em;
+            padding: 1em;
+            border: 1px solid #77a8cc;
+            border-radius: 0.4em;
+            font-size: 1em;
+        }
+        input[name="amount"]:focus{
+            box-shadow: 0 0.02em 0.2em @master;
+        }
+        .date{
+            height: 3em;
+            padding: 0 .8em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #cccccc;
+            text-align: right;
+            border-radius: 0.4em;
+            color: #7d7d84;
+            svg{
+                margin-left: 0.11em;
+            }
+        }
+    }
+}

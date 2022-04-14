@@ -101,17 +101,41 @@ const CloseMonthPopup = () => {
 
 const OpenMonthPopup = () => {
     popupTogger()
+}
+enum OptClass {
+    add = "add",
+    remove = "remove"
+}
+const setMonthPopupMarginBotton = (opt: OptClass, classSelector: string) => {
     const monthPop = doc.qss(".app-popup .month-popup") as HTMLDivElement
-    monthPop.style.transition = "bottom .3s linear"
-    monthPop.style.bottom = "0"
+    monthPop.classList[opt](classSelector)
 }
 
 const popupTogger = () => {
-    doc.qss(".app-popup")?.classList.toggle("app-popup-show")
+    let timer: any;
+    let appPopup = doc.qss(".app-popup")
+    // 隐藏，先等monthContent做完动画,appPopup再display：none
+    if (appPopup?.classList.contains("app-popup-show")){
+        setMonthPopupMarginBotton(OptClass.add,"hidden")
+        setMonthPopupMarginBotton(OptClass.remove, "show")
+        setTimeout(()=>{
+            appPopup?.classList.toggle("app-popup-show")
+        }, 320)
+    }else{
+        // 显示，先等appPop 显示出来，monthpop再做动画
+        appPopup?.classList.toggle("app-popup-show")
+        timer = setTimeout(()=>{
+                setMonthPopupMarginBotton(OptClass.add,"show")
+                setMonthPopupMarginBotton(OptClass.remove,"hidden")
+            clearTimeout(timer)
+        }, 20)
+    }
 }
 
 const SelectorCall = (cb: Function) =>  {
     doc.qss(".app-popup-month")?.addEventListener("click", (e)=>{
+        e.stopPropagation()
+        e.preventDefault()
         let tagget = e.target as HTMLLIElement
         tagget.classList.add("active")
         cb && cb(tagget.id)
