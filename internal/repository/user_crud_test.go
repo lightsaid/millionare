@@ -41,3 +41,11 @@ func TestRegister(t *testing.T) {
 	require.Equal(t, user.Password, res.Password)
 	require.Equal(t, user.Email, res.Email)
 }
+
+func TestGetEmail(t *testing.T) {
+	userRepo := NewUserRepo(collection)
+	res, err := userRepo.GetByID("625b1314d1903ca18d326526") //("lightsaid@163.com")
+	log.Println(">> ", res, err)
+	require.NoError(t, err)
+
+}
