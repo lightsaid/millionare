@@ -12,6 +12,9 @@ type Repository interface {
 	GetUserByID(id string) (*models.UserModel, error)
 	GetUserByNickname(nickname string) (*models.UserModel, error)
 	GetUserByEmail(email string) (*models.UserModel, error)
+	UpdateUser(user *models.UserModel) (*models.UserModel, error)
+	UpdateUserBalance(id string, balance float32) (*models.UserModel, error)
+	UpdateUserAvatar(id string, imgURL string) (*models.UserModel, error)
 }
 
 type repository struct {

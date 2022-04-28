@@ -12,7 +12,12 @@ func NewRoutes(handler *handlers.APIHandler) *gin.Engine {
 	apiv1 := r.Group("/api/v1")
 	{
 		apiv1.POST("/register", handler.Register)
-		// apiv1.POST("/login", handler.Login)
+		apiv1.POST("/login", handler.Login)
+	}
+	userv1 := apiv1.Group("/user")
+	{
+		userv1.POST("", handler.UpdateUser)
+		userv1.POST("/avatar", handler.UpdateAvatar)
 	}
 	return r
 }

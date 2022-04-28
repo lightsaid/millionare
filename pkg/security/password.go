@@ -12,6 +12,6 @@ func HashPassword(password string) (string, error) {
 }
 
 // VerifyPassword 验证密码是否正确
-func VerifyPassword(hashPass, password string) error {
-	return bcrypt.CompareHashAndPassword([]byte(hashPass), []byte(password))
+func VerifyPassword(hashPass, plainText string) error {
+	return bcrypt.CompareHashAndPassword([]byte(hashPass), []byte(plainText))
 }

@@ -5,20 +5,28 @@ import (
 	"net/http"
 	"time"
 
+	ut "github.com/go-playground/universal-translator"
 	"go.mongodb.org/mongo-driver/mongo"
 	"lightsaid.com/millionare/cmd/api/handlers"
 	"lightsaid.com/millionare/cmd/api/routes"
 	"lightsaid.com/millionare/internal/repository"
 	"lightsaid.com/millionare/pkg/driver"
+	"lightsaid.com/millionare/pkg/validator"
 )
 
 var httpAddr = ":4000"
 var mongodbURL = "mongodb://localhost:27017"
 var mongodbName = "millionare"
+var err error
+var trans ut.Translator
+var db *mongo.Database
 
 func main() {
-	var db *mongo.Database
-	var err error
+	// 0. 初始化验证器翻译
+	if trans, err = validator.InitTrans("zh"); err != nil {
+		log.Fatal("初始化验证器翻译错误：", err)
+	}
+
 	// 1. 链接mongodb
 	if db, err = driver.MongodbDriver(mongodbURL, mongodbName); err != nil {
 		log.Fatal(err)
@@ -28,7 +36,7 @@ func main() {
 	repo := repository.NewRepository(db)
 
 	// 3. 创建路由handler
-	handler := handlers.NewAPIHandler(repo)
+	handler := handlers.NewAPIHandler(repo, trans, "xxxxsdsadsadsadsadsadasddaawqeqwewqeweqweqweq")
 
 	// 4. 创建路由
 	r := routes.NewRoutes(handler)
