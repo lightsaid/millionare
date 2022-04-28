@@ -10,8 +10,6 @@ import (
 	"lightsaid.com/millionare/internal/models"
 )
 
-const dbTimeout = 5 * time.Second
-
 type userRepo struct {
 	col *mongo.Collection
 }

@@ -9,6 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"lightsaid.com/millionare/cmd/api/handlers"
 	"lightsaid.com/millionare/cmd/api/routes"
+	_ "lightsaid.com/millionare/internal/models"
 	"lightsaid.com/millionare/internal/repository"
 	"lightsaid.com/millionare/pkg/driver"
 	"lightsaid.com/millionare/pkg/validator"
